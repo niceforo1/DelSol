@@ -1,0 +1,24 @@
+package view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
+
+public class ViewProduct extends JInternalFrame{
+	public ViewProduct(){
+		super("Producto",true, true, true, true);
+		
+		JButton b = new JButton("Cargar");
+		b.setBounds(20, 230, 120, 20);
+		b.addActionListener(new ActionListener(){	
+			public void actionPerformed(ActionEvent e){
+				//agregar
+				null;
+			}
+			
+		});
+		this.getContentPane().add(b);
+	}
+}

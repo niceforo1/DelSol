@@ -1,0 +1,61 @@
+package controller;
+
+import com.ues21.awt.model.Cliente;
+import com.ues21.awt.model.Empleado;
+import com.ues21.awt.model.IO_archivos;
+import dao.*;
+
+public class GuarAction extends Controlador{
+	public void execute (String name, ParametrosAccion pars){		
+		if (name.equals("guaremp")){
+			executeGuarEmp(pars);
+		}else if (name.equals("guarrec")){
+			executeGuarRec(pars);
+		}else if (name.equals("guarcli")){			
+			executeGuarCli(pars);		
+		}		
+	}
+	
+	public Object[] executeCons(String name, ParametrosAccion pars){
+		return null;
+	}
+	
+	protected void executeGuarEmp(ParametrosAccion pars){
+		//IO_archivos io = new IO_archivos();
+		//String empleado;		
+		Empleado emp = new Empleado();			
+		emp.setLegajo(Integer.parseInt((String)pars.get("legajo")));
+		emp.setNombreApellido((String)pars.get("nombre"));
+		emp.setUsuario((String)pars.get("usuario"));
+		emp.setPass((String)pars.get("password")); 
+		EmpleadoDAO edao = AbstractDAOFactory.getInstance(AbstractDAOFactory.MYSQL).getEmpleadoDAO();
+		edao.agregarEmpleado(emp);
+		//empleado = emp.getLegajo()+";"+emp.getNombreApellido() + ";"+ emp.getUsuario()+";"+emp.getPass()+";";
+		//io.escritura(empleado, "empleados.txt");
+		
+	}
+	
+	protected void executeGuarRec(ParametrosAccion pars){
+		IO_archivos io = new IO_archivos();
+		String empleado;
+		Empleado emp = new Empleado();
+		emp.setNombreApellido((String)pars.get("nombre"));
+		emp.setUsuario((String)pars.get("usuario"));
+		emp.setPass((String)pars.get("password"));
+		empleado = emp.getNombreApellido() + ";"+ emp.getUsuario()+";"+emp.getPass()+";";
+		io.escritura(empleado, "reclamos.txt");
+		
+	}
+	
+	protected void executeGuarCli(ParametrosAccion pars){
+		IO_archivos io = new IO_archivos();
+		String cliente;
+		Cliente cli = new Cliente();
+		cli.setNroCuenta(Integer.parseInt((String)pars.get("numcli")));
+		cli.setDomicilio((String)pars.get("domicilio"));
+		cli.setUsuario((String)pars.get("usuario"));
+		cli.setPass((String)pars.get("password"));
+		cliente = cli.getNroCuenta()+ ";"+cli.getDomicilio()+";"+ cli.getUsuario()+";"+cli.getPass()+";";
+		io.escritura(cliente, "clientes.txt");		
+	}	
+}

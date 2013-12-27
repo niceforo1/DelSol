@@ -1,0 +1,49 @@
+package controller;
+
+import javax.swing.JDesktopPane;
+
+import view.Principal;
+import view.ViewProduct;
+
+public class AgregarAction extends Controlador {
+	public void execute (String name, ParametrosAccion pars){		
+		if(name.equals("producto")){
+			executeProducto(pars);
+		}else if(name.equals("loginForm")){
+			executeLoginForm(pars);
+		}else if(name.equals("venta")){
+			executeCli(pars);		
+		}
+	}
+	
+	public Object[] executeCons(String name, ParametrosAccion pars){
+		return null;
+		
+	}
+	
+	protected void executeProducto(ParametrosAccion pars){
+		JDesktopPane panel = (JDesktopPane)pars.get("desk");
+		ViewProduct viewProd = new ViewProduct();
+		viewProd.setVisible(true);
+		panel.add(viewProd);
+		
+	}
+	
+	protected void executeLoginForm(ParametrosAccion pars){
+		Principal owner = (Principal)pars.get("principal");		
+		//owner.setModal(true);
+		owner.setVisible(true);
+	}
+	/*protected void executeCli(ParametrosAccion pars){
+		JDesktopPane panel = (JDesktopPane)pars.get("desk");
+		AgCli agc = new AgCli();
+		agc.setVisible(true);		
+		panel.add(agc);		
+	}
+	protected void executeRec(ParametrosAccion pars){
+		JDesktopPane panel = (JDesktopPane)pars.get("desk");
+		AgRec agr = new AgRec();
+		agr.setVisible(true);
+		panel.add(agr);
+	}*/
+}

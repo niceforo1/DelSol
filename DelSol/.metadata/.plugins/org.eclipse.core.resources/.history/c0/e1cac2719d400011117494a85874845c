@@ -1,0 +1,13 @@
+package dao;
+import com.ues21.awt.model.*;
+import java.util.List;
+
+public interface EmpleadoDAO {
+	public void agregarEmpleado(Empleado e);
+	public void actualizarEmpleado(Empleado e);
+	public void eliminarEmpleado(Empleado e);
+	public Empleado buscar(Empleado e);
+
+	public List<Empleado> listar();
+
+}

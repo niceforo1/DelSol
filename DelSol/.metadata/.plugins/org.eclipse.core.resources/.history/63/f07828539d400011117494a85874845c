@@ -1,0 +1,39 @@
+package dao;
+
+import java.util.List;
+
+import model.Producto;
+
+public class MysqlProductoDAO implements ProductoDAO{
+
+	@Override
+	public void actualizarCliente(Producto p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void agregarCliente(Producto p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Producto buscar(Producto p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void eliminarCliente(Producto p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Producto> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

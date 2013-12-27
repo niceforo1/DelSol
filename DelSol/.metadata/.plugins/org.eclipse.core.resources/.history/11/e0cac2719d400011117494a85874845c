@@ -1,0 +1,13 @@
+package dao;
+import java.util.List;
+import com.ues21.awt.model.*;
+
+public interface ReclamosDAO {
+	public void agregarReclamo(Reclamo r);
+	public void actualizarReclamo(Reclamo r);
+	public void eliminarReclamo(Reclamo r);
+	public Reclamo buscar(Reclamo r);
+
+	public List<Reclamo> listar();
+	
+}

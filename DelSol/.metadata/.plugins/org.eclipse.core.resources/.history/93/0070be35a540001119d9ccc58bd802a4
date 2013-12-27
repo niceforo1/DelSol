@@ -1,0 +1,23 @@
+package view;
+
+import javax.swing.JInternalFrame;
+
+import org.dyno.visual.swing.layouts.GroupLayout;
+
+//VS4E -- DO NOT REMOVE THIS LINE!
+public class ViewFactura extends JInternalFrame {
+
+	private static final long serialVersionUID = 1L;
+
+	public ViewFactura() {
+		
+		initComponents();
+	}
+
+	private void initComponents() {
+		super("Ventas",true,true,true,true);
+		setLayout(new GroupLayout());
+		setSize(320, 240);
+	}
+
+}

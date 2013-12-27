@@ -1,0 +1,21 @@
+package view;
+
+import javax.swing.JInternalFrame;
+
+import org.dyno.visual.swing.layouts.GroupLayout;
+
+//VS4E -- DO NOT REMOVE THIS LINE!
+public class ViewProduct extends JInternalFrame {
+
+	private static final long serialVersionUID = 1L;
+
+	public ViewProduct() {
+		initComponents();
+	}
+
+	private void initComponents() {
+		setLayout(new GroupLayout());
+		setSize(320, 240);
+	}
+
+}

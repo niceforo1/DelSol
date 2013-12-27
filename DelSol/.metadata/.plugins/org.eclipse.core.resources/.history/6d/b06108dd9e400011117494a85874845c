@@ -1,0 +1,11 @@
+loginForm.class=com.ues21.awt.controller.LoginAction
+login.class=com.ues21.awt.controller.LoginAction
+logout.class=com.ues21.awt.controller.LoginAction
+agemp.class=com.ues21.awt.controller.AgregarAction
+agcli.class=com.ues21.awt.controller.AgregarAction
+agrec.class=com.ues21.awt.controller.AgregarAction
+guaremp.class=com.ues21.awt.controller.GuarAction
+guarrec.class=com.ues21.awt.controller.GuarAction
+guarcli.class=com.ues21.awt.controller.GuarAction
+consemp.class=com.ues21.awt.controller.LoginAction
+

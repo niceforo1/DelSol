@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="model.Producto"/>
+<fullyQualifiedTypeName name="javax.swing.JInternalFrame"/>
+<fullyQualifiedTypeName name="view.ViewProduct"/>
+<fullyQualifiedTypeName name="controller.ParametrosAccion"/>
+<fullyQualifiedTypeName name="view.Principal"/>
+<fullyQualifiedTypeName name="view.ViewFactura"/>
+</qualifiedTypeNameHistroy>

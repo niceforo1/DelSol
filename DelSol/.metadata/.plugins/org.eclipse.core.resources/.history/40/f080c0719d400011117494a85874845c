@@ -1,0 +1,12 @@
+package dao;
+import java.util.List;
+import com.ues21.awt.model.*;
+
+public interface ClienteDAO {
+	public void agregarCliente(Cliente c);
+	public void actualizarCliente(Cliente c);
+	public void eliminarCliente(Cliente c);
+	public Cliente buscar(Cliente c);
+
+	public List<Cliente> listar();
+}

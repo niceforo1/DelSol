@@ -1,0 +1,137 @@
+package Controller;
+import javax.swing.*;
+
+import Controller.*;
+
+import com.ues21.awt.model.*;
+import com.ues21.awt.view.*;
+
+
+import dao.AbstractDAOFactory;
+import dao.EmpleadoDAO;
+
+public class LoginAction extends Controlador{
+	public void execute (String name, ParametrosAccion pars){		
+		if(name.equals("loginForm")){
+			executeLoginForm(pars);
+		}else if(name.equals("login")){
+			executeLogin(pars);
+		}else if(name.equals("logout")){
+			executeLogout(pars);
+		}/*else if(name.equals("agemp")){
+			executeEmp(pars);
+		}else if(name.equals("agrec")){
+			executeRec(pars);
+		}else if(name.equals("agcli")){
+			executeCli(pars);
+		}else if (name.equals("guaremp")){
+			executeGuarEmp(pars);
+		}else if (name.equals("guarrec")){
+			executeGuarRec(pars);
+		}else if (name.equals("guarcli")){			
+			executeGuarCli(pars);
+		}*/else if (name.equals("consemp")){			
+			executeConsEmp(pars);
+		}		
+	}
+	
+	public Object [] executeCons(String name, ParametrosAccion pars){
+		Object[] parm = new Object[4];
+		if(name.equals("consemp")){
+			parm = executeConsEmp(pars);		
+		}
+		return parm;
+	}
+	
+	protected void executeLoginForm (ParametrosAccion pars){
+		Principal owner = (Principal)pars.get("principal");
+		Login d = new Login(owner);
+		d.setModal(true);
+		d.setVisible(true);
+	}
+	
+	protected void executeLogin(ParametrosAccion pars){
+		User u = new User();		
+		u.setUser((String)pars.get("user"));
+		u.setPassword((String)pars.get("password"));
+		
+		LoginServiceImpl serv = new LoginServiceImpl();
+		serv.setUser(u);
+		serv.execute();
+		if(((String)serv.getResult()).equals("ok")){
+			((Login)pars.get("login")).dispose();
+		}
+	}
+	
+	/*protected void executeEmp(ParametrosAccion pars){
+		JDesktopPane panel = (JDesktopPane)pars.get("desk");
+		AgEmp age = new AgEmp();
+		age.setVisible(true);
+		panel.add(age);
+		
+	}
+	protected void executeCli(ParametrosAccion pars){
+		JDesktopPane panel = (JDesktopPane)pars.get("desk");
+		AgCli agc = new AgCli();
+		agc.setVisible(true);		
+		panel.add(agc);		
+	}
+	protected void executeRec(ParametrosAccion pars){
+		JDesktopPane panel = (JDesktopPane)pars.get("desk");
+		AgRec agr = new AgRec();
+		agr.setVisible(true);
+		panel.add(agr);
+	}*/
+	
+	/*protected void executeGuarEmp(ParametrosAccion pars){
+		IO_archivos io = new IO_archivos();
+		String empleado;
+		Empleado emp = new Empleado();
+		emp.setNombreApellido((String)pars.get("nombre"));
+		emp.setUsuario((String)pars.get("usuario"));
+		emp.setPass((String)pars.get("password"));
+		empleado = emp.getNombreApellido() + ";"+ emp.getUsuario()+";"+emp.getPass()+";";
+		io.escritura(empleado, "empleados.txt");
+		
+	}
+	
+	protected void executeGuarRec(ParametrosAccion pars){
+		IO_archivos io = new IO_archivos();
+		String empleado;
+		Empleado emp = new Empleado();
+		emp.setNombreApellido((String)pars.get("nombre"));
+		emp.setUsuario((String)pars.get("usuario"));
+		emp.setPass((String)pars.get("password"));
+		empleado = emp.getNombreApellido() + ";"+ emp.getUsuario()+";"+emp.getPass()+";";
+		io.escritura(empleado, "reclamos.txt");
+		
+	}
+	
+	protected void executeGuarCli(ParametrosAccion pars){
+		IO_archivos io = new IO_archivos();
+		String cliente;
+		Cliente cli = new Cliente();
+		cli.setNroCuenta(Integer.parseInt((String)pars.get("numcli")));
+		cli.setDomicilio((String)pars.get("domicilio"));
+		cli.setUsuario((String)pars.get("usuario"));
+		cli.setPass((String)pars.get("password"));
+		cliente = cli.getNroCuenta()+ ";"+cli.getDomicilio()+";"+ cli.getUsuario()+";"+cli.getPass()+";";
+		io.escritura(cliente, "clientes.txt");		
+	}*/
+	
+	protected void executeLogout(ParametrosAccion pars){
+		System.exit(0);
+	}
+	public Object[] executeConsEmp(ParametrosAccion pars){
+		Object[] parm =new Object[4];
+		Empleado emp = new Empleado();
+		emp.setLegajo(Integer.parseInt((String)pars.get("legajo")));
+		EmpleadoDAO edao = AbstractDAOFactory.getInstance(AbstractDAOFactory.MYSQL).getEmpleadoDAO();
+		emp = edao.buscar(emp);
+		parm[0]=emp.getLegajo();
+		parm[1]= emp.getNombreApellido();
+		parm[2]= emp.getUsuario();
+		parm[3]= emp.getPass();
+		return parm;
+	}
+}

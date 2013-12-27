@@ -1,0 +1,5 @@
+loginForm.class=controller.AgregarAction
+login.class=com.ues21.awt.controller.LoginAction
+logout.class=com.ues21.awt.controller.LoginAction
+producto.class=controller.AgregarAction
+

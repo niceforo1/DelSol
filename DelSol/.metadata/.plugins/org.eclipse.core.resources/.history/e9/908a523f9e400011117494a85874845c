@@ -1,0 +1,48 @@
+package dao; 
+import java.util.List;
+
+
+import com.ues21.awt.model.*;
+
+import controller.*;
+
+
+public class MysqlEmpleadoDAO implements EmpleadoDAO {
+	public void agregarEmpleado(Empleado e){
+		String sql = "insert into empleado(legajo,categoria,usuario,password) values(?,?,?,?)";
+		Object [][] params = new Object[1][5];
+		params[0][0]= "empleado";
+		params[0][1] = e.getLegajo().toString();
+		params[0][2] = e.getNombreApellido();
+		params[0][3] = e.getUsuario();
+		params[0][4] = e.getPass();		
+		JdbcConnection con = new JdbcConnection();
+		con.actualizar(sql, params);
+	}
+	public void actualizarEmpleado(Empleado e){
+		
+	}
+	public void eliminarEmpleado(Empleado e){
+		
+	}
+	public Empleado buscar(Empleado e){
+		String sql = "select legajo,categoria,usuario,password from empleado where legajo = '"+ e.getLegajo() + "'";
+		JdbcConnection con = new JdbcConnection();
+		List<List<String>> res = con.consulta(sql);
+		if (res != null) {
+			Empleado emp = new Empleado();
+			emp.setLegajo(Integer.parseInt((res.get(1).get(0))));
+			emp.setNombreApellido((res.get(1).get(1)));
+			emp.setUsuario((res.get(1).get(2)));
+			emp.setPass((res.get(1).get(3)));
+			return emp;			
+		} 
+		return null;	
+	}
+
+	public List<Empleado> listar(){
+		return null;
+		
+	}
+
+}

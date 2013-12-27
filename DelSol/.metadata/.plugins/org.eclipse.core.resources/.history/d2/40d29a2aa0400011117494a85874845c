@@ -1,0 +1,15 @@
+package view;
+
+import controller.ParametrosAccion;
+
+public class Aplicacion {
+	public static void main(String[] args){
+		Principal p = new Principal();
+		p.setVisible(true);
+		ParametrosAccion params = new ParametrosAccion();
+		params.add("principal",p);
+		controller.callAction("loginForm", params);
+	}
+	 
+
+}

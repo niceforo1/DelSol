@@ -1,0 +1,14 @@
+package com.ues21.awt.view;
+import com.ues21.awt.controller.*;
+
+public class Aplicacion {
+	public static void main(String[] args){
+		Principal p = new Principal();
+		p.setVisible(true);
+		ParametrosAccion params = new ParametrosAccion();
+		params.add("principal",p);
+		Controlador.callAction("loginForm", params);
+	}
+	 
+
+}

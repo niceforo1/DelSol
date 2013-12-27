@@ -1,0 +1,3 @@
+#DriverManager.Preferences
+#Mon Jan 16 00:20:04 GMT 2012
+org.eclipse.datatools.enablement.mysql.5_1x.driverTemplate=true

@@ -1,0 +1,10 @@
+package dao;
+
+public class MysqlDAOFactory extends AbstractDAOFactory {
+	@Override
+	public EmpleadoDAO getEmpleadoDAO() {
+		// TODO Auto-generated method stub
+		return new MysqlEmpleadoDAO();
+	}	
+}
+	

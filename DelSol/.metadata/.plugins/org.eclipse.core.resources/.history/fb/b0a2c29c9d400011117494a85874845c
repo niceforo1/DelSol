@@ -1,0 +1,10 @@
+package dao;
+
+public class FileDAOFactory extends AbstractDAOFactory {
+	@Override
+	public EmpleadoDAO getEmpleadoDAO() {
+
+		return null;
+	}
+
+}

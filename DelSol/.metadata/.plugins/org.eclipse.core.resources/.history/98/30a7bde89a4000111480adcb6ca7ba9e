@@ -1,0 +1,11 @@
+package model;
+
+public class DetalleFactura {
+	private int idDetalle;
+	private int idFactura;
+	private int codigoProducto;
+	private String descripcion;
+	private int cantidad;
+	private int precioUnitario;
+	private int precioTotal;
+}

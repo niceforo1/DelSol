@@ -1,0 +1,99 @@
+package view;
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+import javax.swing.event.*;
+
+import controller.*;
+
+public class Principal extends JFrame implements ActionListener{
+	private JDesktopPane desk;
+	
+	public Principal() {
+		setTitle("Test Desktop e Internal Frame");
+		crearMenu();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		desk = new JDesktopPane();
+		setContentPane(desk);
+		setTitle("Gestion de Reclamos");
+		setBounds(100, 100, 500, 500);
+	}
+	
+	public void crearMenu(){
+		JMenuBar menu = new JMenuBar();
+		setJMenuBar(menu);
+		JMenu mArchivo = new JMenu("Archivo");
+		menu.add(mArchivo);
+		
+		JMenuItem agEmp = new JMenuItem("Empleado");
+		agEmp.setActionCommand("empleado");
+		agEmp.addActionListener(this);
+		mArchivo.add(agEmp);
+		
+		JMenuItem agCli = new JMenuItem("Cliente");
+		agCli.setActionCommand("cliente");
+		agCli.addActionListener(this);
+		mArchivo.add(agCli);
+		
+		JMenuItem agRec = new JMenuItem("Reclamo");
+		agRec.setActionCommand("reclamos");
+		agRec.addActionListener(this);
+		mArchivo.add(agRec);
+		
+		JMenuItem salir = new JMenuItem("Salir");
+		salir.setActionCommand("salir");
+		salir.addActionListener(this);
+		mArchivo.add(salir);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("empleado")) {
+			Principal p = new Principal();
+			ParametrosAccion params = new ParametrosAccion();
+			params.add("principal", p);
+			params.add("desk", desk);
+			Controlador.callAction("agemp", params);
+		} else if (e.getActionCommand().equals("cliente")) {
+			Principal p = new Principal();
+			ParametrosAccion params = new ParametrosAccion();
+			params.add("principal", p);
+			params.add("desk", desk);
+			Controlador.callAction("agcli", params);
+		} else if (e.getActionCommand().equals("reclamos")) {
+			Principal p = new Principal();
+			ParametrosAccion params = new ParametrosAccion();
+			params.add("principal", p);
+			params.add("desk", desk);
+			Controlador.callAction("agrec", params);
+		} else if (e.getActionCommand().equals("salir")) {
+			System.exit(0);
+		} 
+	}
+
+	/*
+	 * public Principal(){ setBounds(100,100,500,400); addWindowListener(new
+	 * WindowAdapter(){ public void windowClosing(WindowEvent arg0){
+	 * super.windowClosing(arg0); Controlador.callAction("logout",null); } });
+	 * MenuItem miSalir = new MenuItem("Salir"); miSalir.addActionListener(new
+	 * ActionListener(){ public void actionPerformed(ActionEvent e){
+	 * Controlador.callAction("logout", null); } }); MenuItem miAgEmp = new
+	 * MenuItem("Agregar Empleado"); miAgEmp.addActionListener(new
+	 * ActionListener(){ public void actionPerformed(ActionEvent e){ Principal p
+	 * = new Principal(); ParametrosAccion params = new ParametrosAccion();
+	 * params.add("principal",p); Controlador.callAction("agemp", params); }
+	 * 
+	 * });
+	 * 
+	 * MenuItem miAgCli = new MenuItem("Agregar Cliente");
+	 * miAgCli.addActionListener(new ActionListener(){ public void
+	 * actionPerformed(ActionEvent e){ Principal p = new Principal();
+	 * ParametrosAccion params = new ParametrosAccion(); params.add("principal",
+	 * p); Controlador.callAction("agcli", params); } });
+	 * 
+	 * Menu mArchivo = new Menu("Archivo"); mArchivo.add(miAgEmp);
+	 * mArchivo.add(miAgCli); mArchivo.add(miSalir);
+	 * 
+	 * MenuBar menu = new MenuBar(); menu.add(mArchivo); setMenuBar(menu); }
+	 */
+}
