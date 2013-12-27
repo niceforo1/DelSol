@@ -72,7 +72,7 @@ public class ViewVenta extends JInternalFrame {
 
 
 	public ViewVenta() {
-		super("Ventas",true,true,true,true);
+		super("Venta",true,true,true,true);
 		initialize();
 	}
 
